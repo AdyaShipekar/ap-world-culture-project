@@ -149,12 +149,18 @@
   .feature-imgs{
     display:flex;
     gap:18px;
-    align-items:stretch;
-    height:320px;              /* the shared height — change to taste */
+    align-items:flex-start;
+    flex-wrap:wrap;
   }
   .feature-imgs .frame{
-    flex:1 1 0;                /* every image gets equal width */
+    flex:0 0 auto;             /* don't stretch to fill the row */
+    height:320px;              /* the shared max height */
+    max-width:100%;
+  }
+  .feature-imgs .frame img{
+    width:auto;
     height:100%;
+    object-fit:contain;        /* keeps the real aspect ratio, no cropping */
   }
 
   footer{
