@@ -180,6 +180,39 @@
     .feature-imgs .frame{flex:1 1 45%;height:200px}
     .slide{width:230px}
   }
+
+    /* ---------- STAGE VIEWER ---------- */
+  .stage-viewer{position:relative}
+  .stage-btn{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    background:rgba(0,0,0,.55);
+    color:#fff;
+    border:none;
+    font-size:1.4rem;
+    line-height:1;
+    padding:10px 14px;
+    cursor:pointer;
+    transition:background .2s;
+  }
+  .stage-btn:hover{background:rgba(0,0,0,.8)}
+  .stage-btn.prev{left:0;border-radius:0 4px 4px 0}
+  .stage-btn.next{right:0;border-radius:4px 0 0 4px}
+  .stage-btn[disabled]{opacity:.25;cursor:default}
+  .stage-label{
+    position:absolute;
+    bottom:10px;
+    left:12px;
+    font-size:.75rem;
+    letter-spacing:.15em;
+    text-transform:uppercase;
+    color:#fff;
+    background:rgba(0,0,0,.55);
+    padding:3px 10px;
+    border-radius:3px;
+  }
+
 </style>
 </head>
 <body>
@@ -201,9 +234,12 @@
     <section>
       <h2>My Artifact: <span>Lord Ganesha Sculpture</span></h2>
       <div class="artifact">
-        <div class="frame">
-          <img src="artifact.jpg" alt="My artifact">
-        </div>
+          <div class="frame stage-viewer">
+            <img id="stageImg" src="artifact.jpg" alt="My artifact">
+            <button class="stage-btn prev" onclick="stageStep(-1)" aria-label="Previous stage">&#10094;</button>
+            <button class="stage-btn next" onclick="stageStep(1)" aria-label="Next stage">&#10095;</button>
+            <span class="stage-label" id="stageLabel">Finished</span>
+          </div>
         <div>
           <p class="body">
             This sculpture, which I created from Play Doh and clay, represents the traditional Hindu deity Lord Ganesha. The artifact represents a Hindu celebration, as well as Hindu religious beliefs.
@@ -307,6 +343,30 @@
     </section>
 
   </div>
+
+<script>
+  // index 0 = finished piece, then backwards through the stages
+  const stages = [
+    {src:"artifact.jpg", label:""},
+    {src:"stage4.jpg",   label:"Stage 4"},
+    {src:"stage3.jpg",   label:"Stage 3"},
+    {src:"stage2.jpg",   label:"Stage 2"},
+    {src:"stage1.jpg",   label:"Stage 1"},
+    {src:"stage0.jpg",   label:"Stage 0"}
+  ];
+  let stageIndex = 0;
+
+  function stageStep(dir){
+    // left arrow (-1) goes back in time, right arrow (1) returns
+    stageIndex = Math.min(stages.length - 1, Math.max(0, stageIndex + (dir === -1 ? 1 : -1)));
+    const s = stages[stageIndex];
+    document.getElementById("stageImg").src = s.src;
+    document.getElementById("stageLabel").textContent = s.label;
+    document.querySelector(".stage-btn.prev").disabled = stageIndex === stages.length - 1;
+    document.querySelector(".stage-btn.next").disabled = stageIndex === 0;
+  }
+  stageStep(0); // set the initial disabled states
+</script>
 
 </body>
 </html>
