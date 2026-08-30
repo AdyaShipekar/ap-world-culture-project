@@ -166,6 +166,17 @@
     object-fit:contain;        /* keeps the real aspect ratio, no cropping */
   }
 
+  .feature-imgs .frame.video{
+    height:320px;              /* match the height on .feature-imgs .frame */
+    aspect-ratio:16/9;         /* gives the iframe a width to fill */
+  }
+  .feature-imgs .frame.video iframe{
+    width:100%;
+    height:100%;
+    display:block;
+    border:0;
+  }
+
   footer{
     border-top:1px solid var(--line);
     padding:30px 0;
@@ -330,6 +341,13 @@
             <div class="frame"><img src="faral.png" alt=""></div>
             <div class="frame"><img src="ladoos.png" alt=""></div>
             <div class="frame"><img src="boondi.jpg" alt=""></div>
+            <div class="frame video">
+              <iframe src="https://www.youtube.com/embed/n6quIQ6g22A"
+                      title="The origin of Laddus"
+                      frameborder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen></iframe>
+            </div>
           </div>
           <p class="body">In Hinduism, food is a way to bring the community together, and reminders of love and support that can be shared amongst family and friends. Ladoos are a core part of this vibrant culture. Their round shape symbolizes wholeness and unity, and they are used as sacred offerings or <em>prasad</em> to invite divine blessings. They are often offered to Lord Ganesha or Goddess Lakshmi.</p>
           <br>
@@ -347,7 +365,7 @@
 <script>
   // index 0 = finished piece, then backwards through the stages
   const stages = [
-    {src:"artifact.jpg", label:""},
+    {src:"artifact.jpg", label:"Finished"},
     {src:"stage4.jpg",   label:"Stage 4"},
     {src:"stage3.jpg",   label:"Stage 3"},
     {src:"stage2.jpg",   label:"Stage 2"},
