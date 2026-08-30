@@ -144,9 +144,18 @@
     .carousel{overflow-x:auto}
   }
 
-  /* ---------- FEATURES ---------- */
-  .features{display:grid;grid-template-columns:repeat(3,1fr);gap:35px}
-  .features .frame{aspect-ratio:4/3}
+  /* ---------- FEATURES (stacked) ---------- */
+  .features{display:flex;flex-direction:column;gap:70px}
+  .feature-imgs{
+    display:flex;
+    gap:18px;
+    align-items:stretch;
+    height:320px;              /* the shared height — change to taste */
+  }
+  .feature-imgs .frame{
+    flex:1 1 0;                /* every image gets equal width */
+    height:100%;
+  }
 
   footer{
     border-top:1px solid var(--line);
@@ -157,7 +166,9 @@
   }
 
   @media(max-width:820px){
-    .artifact,.features{grid-template-columns:1fr}
+    .artifact{grid-template-columns:1fr}
+    .feature-imgs{flex-wrap:wrap;height:auto}
+    .feature-imgs .frame{flex:1 1 45%;height:200px}
     .slide{width:230px}
   }
 </style>
@@ -236,8 +247,12 @@
     <section>
       <h2>Features of <span>Culture</span></h2>
       <div class="features">
-        <div>
-          <div class="frame"><img src="feature1.jpg" alt="Feature one"></div>
+        <div class="feature">
+          <div class="feature-imgs">
+            <div class="frame"><img src="feature1a.jpg" alt=""></div>
+            <div class="frame"><img src="feature1b.jpg" alt=""></div>
+            <div class="frame"><img src="feature1c.jpg" alt=""></div>
+          </div>
           <h3>Values and customs: Respect for Elders</h3>
           <p class="body">Respecting one's elders is a value that is deeply ingrained in Hindu culture. Whenever somebody is older than yourself, it is expected that you show them utmost respect and kindness, by both your physical actions and your verbal conversation. Hindu scriptures teach that parents and teachers guide souls through life: in the Taittiriya Upanishad, it says "matrudevo bhava, pitrudevo bhava, acharyadevo bhava," which means you should honor your mother, father, and teacher as God.</p>
           <br>
@@ -247,8 +262,12 @@
           <br>
           <p class="body">Touching an elder's feet has become ritual to me: I do it every time a family member performs <em>ovalani</em> (a ritual where a lamp is waved in front of a person, usually for a festival or ceremony, to ward off evil spirits and allow for prosperity), whenever I walk into a relative's house, or before an exam or competition. When I was first learning Marathi, my mom often had to correct me when I accidentally called an elder "tu" instead of "tumhi," and I used to complain (a lot) about why they couldn't just be the same; over time, it became second nature to use the plural form. Respecting my elders became an unconscious part of my identity, allowing me to see anyone older than me as somebody worthy of respect.</p>
         </div>
-        <div>
-          <div class="frame"><img src="feature2.jpg" alt="Feature two"></div>
+        <div class="feature">
+          <div class="feature-imgs">
+            <div class="frame"><img src="feature2a.jpg" alt=""></div>
+            <div class="frame"><img src="feature2b.jpg" alt=""></div>
+            <div class="frame"><img src="feature2c.jpg" alt=""></div>
+          </div>
           <h3>Holidays and celebrations: Diwali and Holi</h3>
           <p class="body">Hinduism is characterized by various holidays and celebrations, each of which connect to Hindu religious beliefs. Apart from Ganesh Chaturthi, which I described above, two other important celebrations observed each year are Diwali and Holi. Both of these festivals celebrate the triumph of good over evil.</p>
           <br>
@@ -260,8 +279,12 @@
           <br>
           <p class="body">Holi is celebrated using colorful powders known as <em>gulal</em> and water, which are smeared onto family, friends, and strangers alike in a huge celebration. Music and dance accompany the playfighting and celebrate. Holi is a time to forgive past mistakes and fix broken relationships. To me, this festival each year serves to bring the community together. Celebrating Holi with my family and friends is a yearly tradition that I hope will never be lost.</p>
         </div>
-        <div>
-          <div class="frame"><img src="feature3.jpg" alt="Feature three"></div>
+        <div class="feature">
+          <div class="feature-imgs">
+            <div class="frame"><img src="feature3a.jpg" alt=""></div>
+            <div class="frame"><img src="feature3b.jpg" alt=""></div>
+            <div class="frame"><img src="feature3c.jpg" alt=""></div>
+          </div>
           <h3>Food: Ladoos</h3>
           <p class="body">In Hinduism, food is a way to bring the community together, and reminders of love and support that can be shared amongst family and friends. Ladoos are a core part of this vibrant culture. Their round shape symbolizes wholeness and unity, and they are used as sacred offerings or <em>prasad</em> to invite divine blessings. They are often offered to Lord Ganesha or Goddess Lakshmi.</p>
           <br>
