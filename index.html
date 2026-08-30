@@ -111,7 +111,6 @@
     width:max-content;
     animation:roll 35s linear infinite;
   }
-  .carousel:hover .track{animation-play-state:paused}
   @keyframes roll{
     from{transform:translateX(0)}
     to{transform:translateX(-50%)}
@@ -119,14 +118,18 @@
   .slide{
     position:relative;
     flex:0 0 auto;
-    width:300px;
-    aspect-ratio:4/3;
+    height:180px;              /* shared height — every slide matches */
     border:1px solid var(--line);
     border-radius:6px;
     overflow:hidden;
     background:var(--panel);
   }
-  .slide img{width:100%;height:100%;object-fit:cover;display:block}
+  .slide img{
+    width:auto;
+    height:100%;
+    display:block;
+    object-fit:contain;        /* real aspect ratio, no cropping */
+  }
   .slide .year{
     position:absolute;
     top:10px;
@@ -199,7 +202,6 @@
       <h2>My Artifact: <span>Lord Ganesha Sculpture</span></h2>
       <div class="artifact">
         <div class="frame">
-          <!-- >>> REPLACE with your artifact image <<< -->
           <img src="artifact.jpg" alt="My artifact">
         </div>
         <div>
